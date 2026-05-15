@@ -1,27 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Target, Eye, Globe2, Award } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import heroImg from "@/assessts/hero-about.jpg";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — CHEMfix Construction Chemicals" },
-      { name: "description", content: "CHEMfix is a UK-owned construction chemicals company with operations in Pakistan and Nigeria, delivering structural durability and protection systems." },
-      { property: "og:title", content: "About CHEMfix Construction Chemicals" },
-      { property: "og:description", content: "UK-owned, internationally engineered construction chemical solutions." },
-      { property: "og:url", content: "https://www.chemfix.org/about" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://www.chemfix.org/about" },
-    ],
-  }),
-  component: AboutPage,
-});
-
-function AboutPage() {
+export default function AboutPage() {
   return (
     <>
       <PageHero

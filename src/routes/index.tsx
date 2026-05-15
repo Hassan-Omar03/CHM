@@ -1,26 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Sparkles, Microscope, ShieldCheck, Layers, Beaker, FlaskConical } from "lucide-react";
 import { productCategories } from "@/components/site/data";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import heroImg from "@/assessts/hero-home.jpg";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "CHEMfix — Advanced Construction Chemical Solutions" },
-      { name: "description", content: "Delivering high-performance construction chemicals, waterproofing systems, industrial flooring, concrete repair technologies and road safety solutions." },
-      { property: "og:title", content: "CHEMfix — Advanced Construction Chemical Solutions" },
-      { property: "og:description", content: "High-performance chemicals, waterproofing and protection — engineered since 2005." },
-      { property: "og:url", content: "https://www.chemfix.org/" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://www.chemfix.org/" },
-    ],
-  }),
-  component: HomePage,
-});
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -43,7 +27,7 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   return <span ref={ref}>{n}{suffix}</span>;
 }
 
-function HomePage() {
+export default function HomePage() {
   return (
     <>
       {/* HERO */}

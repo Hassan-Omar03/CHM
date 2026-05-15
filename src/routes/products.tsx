@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
@@ -22,45 +22,7 @@ const gallery = [
   { src: gFlooring, alt: "Industrial flooring", span: "" },
 ];
 
-export const Route = createFileRoute("/products")({
-  head: () => ({
-    meta: [
-      { title: "Products — CHEMfix Construction Chemicals" },
-      { name: "description", content: "Adhesive bonding, concrete admixtures, repair systems, industrial flooring, grouts, sealants, protective coatings, waterproofing and road safety chemicals." },
-      { property: "og:title", content: "High Performance Construction Products" },
-      { property: "og:description", content: "Comprehensive product systems engineered by CHEMfix." },
-      { property: "og:url", content: "https://www.chemfix.org/products" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://www.chemfix.org/products" },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "name": "CHEMfix Product Categories",
-          "description": "High performance construction products engineered by CHEMfix.",
-          "itemListElement": productCategories.map((p, i) => ({
-            "@type": "ListItem",
-            "position": i + 1,
-            "item": {
-              "@type": "Product",
-              "name": p.title,
-              "description": p.description,
-              "image": p.image,
-              "brand": { "@type": "Brand", "name": "CHEMfix" }
-            }
-          }))
-        })
-      }
-    ]
-  }),
-  component: ProductsPage,
-});
-
-function ProductsPage() {
+export default function ProductsPage() {
   return (
     <>
       <PageHero

@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   Headphones, Droplets, Hammer, Layers3, ShieldCheck, Construction, MapPin, LifeBuoy,
@@ -10,50 +9,7 @@ import heroImg from "@/assessts/hero-services.jpg";
 
 const icons = [Headphones, Droplets, Hammer, Layers3, ShieldCheck, Construction, MapPin, LifeBuoy];
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — CHEMfix Construction Chemicals" },
-      { name: "description", content: "Construction chemical consultation, waterproofing, concrete repair, industrial flooring, coatings, road marking and on-site technical assistance." },
-      { property: "og:title", content: "Professional Technical Services — CHEMfix" },
-      { property: "og:description", content: "End-to-end technical support from specification to final delivery." },
-      { property: "og:url", content: "https://www.chemfix.org/services" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://www.chemfix.org/services" },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "CHEMfix Technical Services",
-          "provider": {
-            "@type": "Organization",
-            "name": "CHEMfix Construction Chemicals",
-            "url": "https://www.chemfix.org"
-          },
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Construction Chemical Services",
-            "itemListElement": services.map((s, i) => ({
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": s.title,
-                "description": s.desc
-              }
-            }))
-          }
-        })
-      }
-    ]
-  }),
-  component: ServicesPage,
-});
-
-function ServicesPage() {
+export default function ServicesPage() {
   return (
     <>
       <PageHero

@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { FlaskConical, Mail, Globe, MapPin } from "lucide-react";
 import logo from "@/assessts/image.png";
 

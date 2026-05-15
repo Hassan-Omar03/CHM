@@ -1,47 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Globe, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 
 import heroImg from "@/assessts/hero-contact.jpg";
-
-
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — CHEMfix Construction Chemicals" },
-      { name: "description", content: "Reach CHEMfix in the United Kingdom, Pakistan and Nigeria. Email info@chemfix.org or use the contact form for project inquiries." },
-      { property: "og:title", content: "Contact CHEMfix Construction Chemicals" },
-      { property: "og:description", content: "Get in touch for product specifications, site support and project inquiries." },      { property: "og:url", content: "https://www.chemfix.org/contact" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://www.chemfix.org/contact" },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          "mainEntity": {
-            "@type": "Organization",
-            "name": "CHEMfix Construction Chemicals",
-            "email": "info@chemfix.org",
-            "url": "https://www.chemfix.org",
-            "contactPoint": offices.map(o => ({
-              "@type": "ContactPoint",
-              "contactType": o.label,
-              "areaServed": o.label.replace(" Office", ""),
-              "availableLanguage": "English"
-            }))
-          }
-        })
-      }
-    ]
-  }),
-  component: ContactPage,
-});
 
 const offices = [
   {
@@ -95,7 +57,7 @@ function Field({
   );
 }
 
-function ContactPage() {
+export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", website: "", message: "" });
   const [sent, setSent] = useState(false);
 
