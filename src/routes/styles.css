@@ -1,0 +1,176 @@
+@import "tailwindcss";
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --font-display: "Montserrat", system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+
+  --animate-fade-in: fade-in 0.7s ease-out both;
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
+  --animate-scroll-x: scroll-x 40s linear infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.45; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.08); }
+  }
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* CHEMfix brand: black, dark gray, purple */
+  --background: oklch(0.13 0.005 285);          /* #0F0F0F */
+  --foreground: oklch(0.96 0.005 285);
+  --surface: oklch(0.17 0.006 285);              /* #1F1F1F */
+  --surface-2: oklch(0.21 0.008 285);
+
+  --card: oklch(0.17 0.006 285);
+  --card-foreground: oklch(0.96 0.005 285);
+  --popover: oklch(0.17 0.006 285);
+  --popover-foreground: oklch(0.96 0.005 285);
+
+  --primary: #781977;                            /* Brand Purple */
+  --primary-foreground: oklch(0.98 0 0);
+  --primary-glow: #9e2b9c;                       /* Lighter purple for glow */
+
+  --secondary: oklch(0.21 0.008 285);
+  --secondary-foreground: oklch(0.96 0.005 285);
+  --muted: oklch(0.21 0.008 285);
+  --muted-foreground: oklch(0.72 0.012 285);     /* #D1D5DB-ish */
+  --accent: #781977;
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: #781977;
+
+  --gradient-hero: linear-gradient(180deg, oklch(0.13 0.005 285 / 0.4) 0%, oklch(0.13 0.005 285 / 0.85) 60%, oklch(0.13 0.005 285) 100%);
+  --gradient-purple: linear-gradient(135deg, #781977 0%, #9e2b9c 100%);
+  --gradient-purple-soft: radial-gradient(circle at 50% 50%, rgba(120, 25, 119, 0.35) 0%, transparent 70%);
+
+  --shadow-glow: 0 0 40px -10px rgba(120, 25, 119, 0.6);
+  --shadow-glow-strong: 0 0 80px -10px rgba(120, 25, 119, 0.8);
+  --shadow-elevated: 0 20px 60px -20px oklch(0 0 0 / 0.7);
+}
+
+.dark { color-scheme: dark; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(120, 25, 119, 0.18), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 30%, rgba(120, 25, 119, 0.08), transparent);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: oklch(1 0 0 / 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid oklch(1 0 0 / 0.08);
+    box-shadow: inset 0 1px 1px oklch(1 0 0 / 0.15);
+  }
+  .glass-strong {
+    background: oklch(0.13 0.005 285 / 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid oklch(1 0 0 / 0.1);
+    box-shadow: inset 0 1px 1px oklch(1 0 0 / 0.15), 0 20px 40px -10px oklch(0 0 0 / 0.5);
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #b85eb7 50%, #781977 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .purple-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .purple-glow-strong {
+    box-shadow: var(--shadow-glow-strong);
+  }
+  .border-glow {
+    position: relative;
+  }
+  .border-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(120, 25, 119, 0.6), transparent 50%, rgba(120, 25, 119, 0.6));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .container-px { padding-left: 1.25rem; padding-right: 1.25rem; max-width: 1536px; margin-left: auto; margin-right: auto; }
+  @media (min-width: 640px) { .container-px { padding-left: 2rem; padding-right: 2rem; } }
+  @media (min-width: 1024px) { .container-px { padding-left: 4rem; padding-right: 4rem; } }
+  @media (min-width: 1280px) { .container-px { padding-left: 6rem; padding-right: 6rem; } }
+}
