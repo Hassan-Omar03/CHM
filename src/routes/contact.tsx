@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Globe, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Globe, MapPin, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
+import { toast } from "sonner";
 
 import heroImg from "@/assessts/contact-page.png";
 
@@ -60,12 +61,48 @@ function Field({
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", website: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: "", email: "", website: "", message: "" });
+    setIsSubmitting(true);
+
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      toast.error("Please complete all required fields.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service_id: import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_chemfix_prod",
+          template_id: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_contact_form",
+          user_id: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "chemfix_public_key_987",
+          template_params: {
+            to_email: "info@chemfix.org,chemfix@outlook.com",
+            from_name: form.name,
+            from_email: form.email,
+            reply_to: form.email,
+            website: form.website || "No website provided",
+            message: form.message,
+          },
+        }),
+      });
+
+      if (!response.ok) throw new Error("Network Error");
+
+      setSent(true);
+      toast.success("Message sent successfully! We will get back to you shortly.");
+      setForm({ name: "", email: "", website: "", message: "" });
+      setTimeout(() => setSent(false), 5000);
+    } catch (error) {
+      toast.error("Failed to send message. Please try again or email us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -152,10 +189,16 @@ export default function ContactPage() {
                   <p className="text-xs text-muted-foreground">By submitting you agree to be contacted by CHEMfix.</p>
                   <button
                     type="submit"
-                    disabled={sent}
-                    className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary-glow px-7 py-3.5 text-sm font-semibold text-white purple-glow hover:purple-glow-strong transition-all hover:scale-[1.03] disabled:opacity-70"
+                    disabled={sent || isSubmitting}
+                    className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary-glow px-7 py-3.5 text-sm font-semibold text-white purple-glow hover:purple-glow-strong transition-all hover:scale-[1.03] disabled:opacity-70 disabled:hover:scale-100"
                   >
-                    {sent ? (<><CheckCircle2 className="h-4 w-4" /> Message Sent</>) : (<>Send Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></>)}
+                    {isSubmitting ? (
+                      <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>
+                    ) : sent ? (
+                      <><CheckCircle2 className="h-4 w-4" /> Message Sent</>
+                    ) : (
+                      <>Send Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></>
+                    )}
                   </button>
                 </div>
               </div>
