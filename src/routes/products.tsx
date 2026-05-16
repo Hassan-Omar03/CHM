@@ -9,7 +9,7 @@ import heroImg from "@/assessts/products-page.png";
 import gPlant from "@/assessts/g-plant.jpg";
 import gDrum from "@/assessts/g-drum.jpg";
 import gApp from "@/assessts/g-application.jpg";
-import gWaterproof from "@/assessts/p-waterproof.jpg";
+import gWaterproof from "@/assessts/waterproof.jpeg";
 import gCoating from "@/assessts/p-coating.jpg";
 import gFlooring from "@/assessts/p-flooring.jpg";
 
@@ -56,7 +56,7 @@ export default function ProductsPage() {
                   loading={i < 4 ? "eager" : "lazy"}
                   className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/25 group-hover:to-transparent transition-all duration-500" />
                 <div className="absolute top-4 left-4 text-[10px] tracking-[0.25em] uppercase text-primary-glow font-semibold">
                   0{i + 1}
@@ -101,7 +101,7 @@ export default function ProductsPage() {
                 loading={i < 2 ? "eager" : "lazy"}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 mix-blend-overlay transition-all duration-500" />
               <div className="absolute bottom-4 left-4 text-xs tracking-[0.2em] uppercase text-white/90 font-medium opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all">
                 {g.alt}

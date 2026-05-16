@@ -20,7 +20,7 @@ export function PageHero({
         fetchPriority="high"
         className="absolute inset-0 w-full h-full object-cover scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
       <div
         aria-hidden
         className="absolute -left-40 top-20 h-[480px] w-[480px] rounded-full bg-[var(--gradient-purple-soft)] opacity-40 blur-[120px] animate-glow-pulse"

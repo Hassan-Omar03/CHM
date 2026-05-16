@@ -40,7 +40,7 @@ export default function HomePage() {
           fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
         <div aria-hidden className="absolute -left-40 top-1/3 h-[600px] w-[600px] rounded-full bg-[var(--gradient-purple-soft)] opacity-40 blur-[120px] animate-glow-pulse" />
         <div aria-hidden className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-[var(--gradient-purple-soft)] opacity-40 blur-[120px] animate-glow-pulse [animation-delay:-2s]" />
 
@@ -248,7 +248,7 @@ export default function HomePage() {
                     loading={i < 3 ? "eager" : "lazy"}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/20 group-hover:to-transparent transition-all duration-500" />
                 </div>
                 <div className="p-6">

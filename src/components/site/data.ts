@@ -5,7 +5,7 @@ import pFlooring from "@/assessts/p-flooring.jpg";
 import pGrout from "@/assessts/p-grout.jpg";
 import pSealant from "@/assessts/p-sealant.jpg";
 import pCoating from "@/assessts/p-coating.jpg";
-import pWaterproof from "@/assessts/p-waterproof.jpg";
+import pWaterproof from "@/assessts/waterproof.jpeg";
 import pOthers from "@/assessts/p-others.jpg";
 
 export const productCategories = [
