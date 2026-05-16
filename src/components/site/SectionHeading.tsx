@@ -29,7 +29,7 @@ export function SectionHeading({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7 }}
-        className="font-display text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight text-gradient"
+        className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-gradient"
       >
         {title}
       </motion.h2>
@@ -39,7 +39,7 @@ export function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed"
+          className="mt-4 md:mt-5 text-base md:text-lg text-muted-foreground leading-relaxed"
         >
           {description}
         </motion.p>

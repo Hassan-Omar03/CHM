@@ -5,7 +5,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { productCategories } from "@/components/site/data";
 
-import heroImg from "@/assessts/hero-products.jpg";
+import heroImg from "@/assessts/products-page.png";
 import gPlant from "@/assessts/g-plant.jpg";
 import gDrum from "@/assessts/g-drum.jpg";
 import gApp from "@/assessts/g-application.jpg";
@@ -32,14 +32,14 @@ export default function ProductsPage() {
         subtitle="Explore CHEMfix's comprehensive line of construction chemicals — engineered for durability, safety and long-term protection."
       />
 
-      <section className="py-12 md:py-20 container-px">
+      <section className="py-16 md:py-24 container-px">
         <SectionHeading
           eyebrow="Categories"
           title="Engineered systems for every application"
           description="Each product family is formulated for specific performance demands — from heavy industrial floors to high-rise waterproofing envelopes."
         />
 
-        <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
           {productCategories.map((p, i) => (
             <motion.article
               key={p.slug}
@@ -77,7 +77,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-20 container-px">
+      <section className="py-16 md:py-24 container-px">
         <SectionHeading
           eyebrow="Gallery"
           title="Inside CHEMfix"
@@ -85,7 +85,7 @@ export default function ProductsPage() {
           align="center"
         />
 
-        <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 xl:gap-6 auto-rows-[200px] md:auto-rows-[240px] xl:auto-rows-[300px]">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 xl:gap-6 auto-rows-[200px] md:auto-rows-[240px] xl:auto-rows-[300px]">
           {gallery.map((g, i) => (
             <motion.div
               key={i}

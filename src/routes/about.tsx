@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Target, Eye, Globe2, Award } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import heroImg from "@/assessts/hero-about.jpg";
+import heroImg from "@/assessts/about-page.png";
 
 export default function AboutPage() {
   return (
@@ -14,7 +14,7 @@ export default function AboutPage() {
         subtitle="A UK-owned construction chemical company combining engineering excellence with on-the-ground expertise across three continents."
       />
 
-      <section className="py-28 container-px">
+      <section className="py-16 md:py-24 container-px">
         <div className="grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
             <SectionHeading
@@ -22,7 +22,7 @@ export default function AboutPage() {
               title="UK-owned, internationally engineered."
             />
           </div>
-          <div className="lg:col-span-7 space-y-5 text-muted-foreground leading-relaxed text-base md:text-lg">
+          <div className="lg:col-span-7 space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>CHEMfix Construction Chemicals is a UK-owned company operating in Pakistan and Nigeria with expertise in construction chemicals and industrial protection systems.</p>
             <p>The company provides comprehensive solutions for residential, commercial, industrial and infrastructure projects.</p>
             <p>CHEMfix products are designed to improve structural durability, waterproofing performance, industrial flooring quality and long-term protection.</p>
@@ -30,7 +30,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 container-px">
+      <section className="py-16 md:py-24 container-px">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-10">
           {[
             { Icon: Target, t: "Our Mission", d: "Our mission is to deliver reliable and innovative construction chemical technologies that improve safety, durability and construction performance." },
@@ -50,14 +50,14 @@ export default function AboutPage() {
                   <Icon className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="font-display text-2xl md:text-3xl font-bold mb-4 text-gradient">{t}</h3>
-                <p className="text-muted-foreground leading-relaxed text-base md:text-lg">{d}</p>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{d}</p>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      <section className="py-28 container-px">
+      <section className="py-16 md:py-24 container-px">
         <SectionHeading
           eyebrow="Our Reach"
           title="Three continents. One standard of excellence."
@@ -65,7 +65,7 @@ export default function AboutPage() {
           align="center"
         />
 
-        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-8">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 xl:gap-8">
           {[
             { city: "London", country: "United Kingdom", note: "Headquarters & Strategy" },
             { city: "Karachi", country: "Pakistan", note: "Manufacturing & Operations" },
@@ -80,23 +80,23 @@ export default function AboutPage() {
               className="rounded-2xl glass border-glow p-8 hover:bg-white/[0.06] transition group"
             >
               <Globe2 className="h-6 w-6 text-primary-glow mb-4 group-hover:scale-110 transition-transform" />
-              <div className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">{o.note}</div>
-              <div className="font-display text-2xl font-bold">{o.city}</div>
-              <div className="text-sm text-muted-foreground">{o.country}</div>
+              <div className="text-xs font-semibold tracking-[0.25em] uppercase text-primary-glow mb-2">{o.note}</div>
+              <div className="font-display text-xl font-semibold mb-1">{o.city}</div>
+              <div className="text-sm text-muted-foreground leading-relaxed">{o.country}</div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      <section className="py-28 container-px">
+      <section className="py-16 md:py-24 container-px">
         <div className="rounded-3xl bg-gradient-to-br from-surface to-[oklch(0.11_0.005_285)] border border-border p-8 sm:p-10 md:p-16 grid lg:grid-cols-2 gap-10 xl:gap-16 items-center">
           <div>
             <Award className="h-10 w-10 text-primary-glow mb-5" />
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-gradient leading-tight">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gradient leading-tight">
               Two decades of engineered protection.
             </h2>
           </div>
-          <p className="text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             Since 2005, CHEMfix has supported residential, commercial, industrial and infrastructure projects with chemicals built to perform — combining laboratory rigor with practical field knowledge.
           </p>
         </div>

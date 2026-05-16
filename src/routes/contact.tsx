@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Globe, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 
-import heroImg from "@/assessts/hero-contact.jpg";
+import heroImg from "@/assessts/contact-page.png";
 
 const offices = [
   {
@@ -77,12 +77,12 @@ export default function ContactPage() {
         subtitle="Speak with our technical team about products, specifications and on-site support across the UK, Pakistan and Nigeria."
       />
 
-      <section className="py-24 container-px">
+      <section className="py-16 md:py-24 container-px">
         <div className="grid lg:grid-cols-12 gap-10">
           {/* DETAILS */}
           <div className="lg:col-span-5 space-y-6">
             <div className="rounded-2xl glass border-glow p-7">
-              <h3 className="font-display text-lg font-semibold mb-5 flex items-center gap-2">
+              <h3 className="font-display text-xl font-semibold mb-5 flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary-glow" /> Email & Web
               </h3>
               <ul className="space-y-3 text-sm">
@@ -110,7 +110,7 @@ export default function ContactPage() {
                       <MapPin className="h-4 w-4 text-white" />
                     </div>
                     <div>
-                      <div className="text-xs tracking-[0.2em] uppercase text-primary-glow font-semibold mb-1">{o.label}</div>
+                      <div className="text-xs tracking-[0.25em] uppercase text-primary-glow font-semibold mb-2">{o.label}</div>
                       <div className="text-sm text-muted-foreground leading-relaxed">
                         {o.lines.map((l) => <div key={l}>{l}</div>)}
                       </div>
@@ -134,8 +134,8 @@ export default function ContactPage() {
               <div aria-hidden className="absolute -top-32 -right-32 h-72 w-72 rounded-full bg-[var(--gradient-purple-soft)] opacity-60" />
 
               <div className="relative">
-                <h2 className="font-display text-2xl sm:text-3xl xl:text-4xl font-bold text-gradient mb-2">Send us a message</h2>
-                <p className="text-sm text-muted-foreground mb-8">We'll respond within one business day.</p>
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-3">Send us a message</h2>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">We'll respond within one business day.</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 xl:gap-6">
                   <Field id="name" label="Name" required value={form.name} onChange={(v) => setForm({ ...form, name: v })} />

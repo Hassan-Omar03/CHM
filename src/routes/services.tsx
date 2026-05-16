@@ -5,7 +5,7 @@ import {
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { services, workflow } from "@/components/site/data";
-import heroImg from "@/assessts/hero-services.jpg";
+import heroImg from "@/assessts/service-page.png";
 
 const icons = [Headphones, Droplets, Hammer, Layers3, ShieldCheck, Construction, MapPin, LifeBuoy];
 
@@ -19,14 +19,14 @@ export default function ServicesPage() {
         subtitle="From specification to site supervision — CHEMfix engineers stand alongside contractors and consultants on every project."
       />
 
-      <section className="py-28 container-px">
+      <section className="py-16 md:py-24 container-px">
         <SectionHeading
           eyebrow="Capabilities"
           title="Comprehensive technical support"
           description="A full-service partner across the construction chemical lifecycle."
         />
 
-        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 xl:gap-8">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 xl:gap-8">
           {services.map((s, i) => {
             const Icon = icons[i] ?? Headphones;
             return (
@@ -51,7 +51,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-28 container-px">
+      <section className="py-16 md:py-24 container-px">
         <SectionHeading
           eyebrow="Process"
           title="A six-step delivery workflow"
@@ -59,7 +59,7 @@ export default function ServicesPage() {
           align="center"
         />
 
-        <div className="mt-20 relative">
+        <div className="mt-10 md:mt-16 relative">
           <div aria-hidden className="hidden lg:block absolute top-12 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-glow/40 to-transparent" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 xl:gap-8">
             {workflow.map((w, i) => (

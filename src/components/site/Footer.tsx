@@ -4,12 +4,12 @@ import logo from "@/assessts/image.png";
 
 export function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-border/60 bg-[oklch(0.11_0.005_285)]">
+    <footer className="relative mt-16 md:mt-24 border-t border-border/60 bg-[oklch(0.11_0.005_285)]">
       <div
         aria-hidden
         className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary-glow/60 to-transparent"
       />
-      <div className="container-px py-20">
+      <div className="container-px py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <div className="flex items-center gap-2.5 mb-5">

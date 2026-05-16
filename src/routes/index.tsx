@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Sparkles, Microscope, ShieldCheck, Layers, Beaker, FlaskConical } from "lucide-react";
 import { productCategories } from "@/components/site/data";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import heroImg from "@/assessts/hero-home.jpg";
+import heroImg from "@/assessts/home-page.png";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -32,10 +32,17 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <img src={heroImg} alt="" aria-hidden loading="eager" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
-        <div aria-hidden className="absolute -left-40 top-1/3 h-[600px] w-[600px] rounded-full bg-[var(--gradient-purple-soft)] animate-glow-pulse" />
-        <div aria-hidden className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-[var(--gradient-purple-soft)] animate-glow-pulse [animation-delay:-2s]" />
+        <img
+          src={heroImg}
+          alt="Engineering and Construction"
+          aria-hidden
+          loading="eager"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+        <div aria-hidden className="absolute -left-40 top-1/3 h-[600px] w-[600px] rounded-full bg-[var(--gradient-purple-soft)] opacity-40 blur-[120px] animate-glow-pulse" />
+        <div aria-hidden className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-[var(--gradient-purple-soft)] opacity-40 blur-[120px] animate-glow-pulse [animation-delay:-2s]" />
 
         <div className="relative container-px w-full pt-32 pb-20">
           <div className="max-w-5xl">
@@ -43,7 +50,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium tracking-[0.25em] uppercase text-primary-glow mb-7"
+              className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-semibold tracking-[0.25em] uppercase text-primary-glow mb-7"
             >
               <Sparkles className="h-3.5 w-3.5" />
               Engineered since 2005 · UK · Pakistan · Nigeria
@@ -53,7 +60,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl md:text-7xl xl:text-8xl font-bold leading-[1.02] text-gradient"
+              className="font-display text-5xl md:text-7xl font-bold leading-[1.05] text-gradient"
             >
               Advanced Construction<br/>Chemical Solutions
             </motion.h1>
@@ -62,7 +69,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.25 }}
-            className="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg md:text-xl xl:text-2xl text-muted-foreground leading-relaxed"
+              className="mt-6 sm:mt-8 max-w-2xl text-lg text-foreground/90 leading-relaxed"
             >
               Delivering high-performance construction chemicals, waterproofing systems, industrial flooring, concrete repair technologies and road safety solutions.
             </motion.p>
@@ -103,20 +110,20 @@ export default function HomePage() {
       </section>
 
       {/* ABOUT INTRO */}
-      <section className="relative py-32 container-px">
+      <section className="relative py-16 md:py-24 container-px">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <SectionHeading
             eyebrow="About CHEMfix"
             title={<>Building stronger structures<br/>through innovation.</>}
           />
-          <div className="space-y-5 text-muted-foreground leading-relaxed">
+          <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>CHEMfix Construction Chemicals was established in 2005 by experienced construction chemical manufacturers and suppliers.</p>
             <p>The company was founded with the objective of delivering reliable, innovative and high-quality construction chemical solutions based on modern engineering technologies.</p>
             <p>CHEMfix provides products designed to save time, reduce cost, improve durability and increase structural protection for all types of construction projects.</p>
           </div>
         </div>
 
-        <div className="mt-16 sm:mt-20 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden bg-border/60 border border-border">
+        <div className="mt-10 md:mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden bg-border/60 border border-border">
           {[
             { v: 20, s: "+", l: "Years Experience" },
             { v: 500, s: "+", l: "Projects Delivered" },
@@ -134,7 +141,7 @@ export default function HomePage() {
       </section>
 
       {/* NEW TECHNOLOGIES */}
-      <section className="relative py-32">
+      <section className="relative py-16 md:py-24">
         <div className="container-px">
           <SectionHeading
             eyebrow="Innovation"
@@ -142,7 +149,7 @@ export default function HomePage() {
             description="CHEMfix develops road marking products and road safety materials designed to deliver durability, visibility and long-lasting performance under demanding environmental conditions."
           />
 
-          <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
+          <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
             {[
               { Icon: Beaker, t: "Advanced Formulations", d: "Modern polymer chemistry tuned for tropical, marine and heavy-industrial environments." },
               { Icon: ShieldCheck, t: "Long-Life Performance", d: "Coatings and sealants engineered for extended service life under chemical and UV exposure." },
@@ -159,7 +166,7 @@ export default function HomePage() {
                 <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-primary-glow grid place-items-center mb-5 purple-glow group-hover:scale-110 transition-transform">
                   <Icon className="h-5 w-5 text-white" />
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-2">{t}</h3>
+                <h3 className="font-display text-xl font-semibold mb-3">{t}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{d}</p>
               </motion.div>
             ))}
@@ -168,7 +175,7 @@ export default function HomePage() {
       </section>
 
       {/* RESEARCH EXPERTS */}
-      <section className="relative py-32">
+      <section className="relative py-16 md:py-24">
         <div className="container-px">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
@@ -176,7 +183,7 @@ export default function HomePage() {
                 eyebrow="Research"
                 title="Research Experts"
               />
-              <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed">
+              <div className="mt-6 space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>CHEMfix has developed expert systems and modern production methods that combine technical knowledge, engineering expertise and advanced formulation technologies.</p>
                 <p>The company continuously improves product quality through innovation, testing and practical field experience.</p>
               </div>
@@ -198,8 +205,8 @@ export default function HomePage() {
                   className="rounded-xl glass p-6 hover:border-primary-glow/40 transition"
                 >
                   <Icon className="h-6 w-6 text-primary-glow mb-3" />
-                  <h4 className="font-display font-semibold mb-1">{t}</h4>
-                  <p className="text-xs text-muted-foreground">{d}</p>
+                  <h4 className="font-display text-lg font-semibold mb-2">{t}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{d}</p>
                 </motion.div>
               ))}
             </div>
@@ -208,9 +215,9 @@ export default function HomePage() {
       </section>
 
       {/* PRODUCT PREVIEW */}
-      <section className="relative py-32">
+      <section className="relative py-16 md:py-24">
         <div className="container-px">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14">
             <SectionHeading
               eyebrow="Product Range"
               title="High-performance construction products"
@@ -241,12 +248,12 @@ export default function HomePage() {
                     loading={i < 3 ? "eager" : "lazy"}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/20 group-hover:to-transparent transition-all duration-500" />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-display text-lg font-semibold mb-2 group-hover:text-primary-glow transition">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{p.description}</p>
+                  <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary-glow transition">{p.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-5">{p.description}</p>
                   <Link
                     to="/products"
                     className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase text-primary-glow hover:gap-2.5 transition-all"
@@ -261,15 +268,15 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-24">
+      <section className="relative py-16 md:py-24">
         <div className="container-px">
           <div className="relative overflow-hidden rounded-3xl glass-strong border-glow p-8 sm:p-10 md:p-16 text-center">
-            <div aria-hidden className="absolute inset-0 bg-[var(--gradient-purple-soft)] opacity-60" />
+            <div aria-hidden className="absolute inset-0 bg-[var(--gradient-purple-soft)] opacity-40" />
             <div className="relative">
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-gradient max-w-4xl mx-auto leading-tight">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gradient max-w-4xl mx-auto leading-tight">
                 Engineering durability into every project.
               </h2>
-              <p className="mt-5 max-w-xl mx-auto text-muted-foreground">
+              <p className="mt-5 max-w-xl mx-auto text-base md:text-lg text-foreground/90 leading-relaxed">
                 Talk to our technical team about specifications, site visits and product systems.
               </p>
               <Link
