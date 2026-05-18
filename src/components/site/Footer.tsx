@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Globe, MapPin, Instagram } from "lucide-react";
-import logo from "@/assessts/image.png";
+import logo from "@/assessts/logo2.png";
 
 const WhatsAppIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 448 512" className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
               <div className="flex items-center gap-2.5 mb-5">
-                <img src={logo} alt="CHEMfix Logo" className="h-12 w-auto object-contain" />
+                <img src={logo} alt="CHEMfix Logo" className="h-20 w-auto object-contain" />
               </div>
               <p className="text-sm text-[#6B6B72] leading-relaxed">
                 High-performance construction chemicals, waterproofing, industrial flooring and road safety solutions — engineered since 2005.
@@ -92,7 +92,7 @@ export function Footer() {
 
           <div className="mt-16 pt-8 border-t border-[#D9D9D9] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#6B6B72]">
             <p>© {new Date().getFullYear()} CHEMfix Construction Chemicals. All rights reserved.</p>
-            <p className="tracking-wide">UK · Pakistan · Nigeria — established 2005</p>
+            <p className="tracking-wide">Pakistan, Karachi Shah-re-Faisal</p>
           </div>
         </div>
       </footer>

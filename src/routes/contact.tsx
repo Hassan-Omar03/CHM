@@ -8,8 +8,8 @@ import heroImg from "@/assessts/contact-page.png";
 
 const offices = [
   {
-    label: "Pakistan Office",
-    lines: ["Office #10, Muhammadi Centre,", "Saleem Housing Project,", "Shah Faisal Colony No. 3, Karachi."],
+    label: "Pakistan",
+    lines: ["Karachi Shah-re-Faisal"],
   },
   {
     label: "UK Office",

@@ -11,7 +11,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[50vh] lg:min-h-[60vh] flex items-center overflow-hidden">
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-fixed"
         style={{ backgroundImage: `url(${image})` }}

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logo from "@/assessts/image.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -40,10 +39,6 @@ export function Navbar() {
               : "px-2 md:px-4 py-2 sm:py-3 max-w-7xl"
           }`}
         >
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <img src={logo} alt="CHEMfix Logo" className="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
-          </Link>
-
           <nav className="hidden lg:flex items-center gap-1">
             {links.map((l) => {
               const active = location.pathname === l.to;

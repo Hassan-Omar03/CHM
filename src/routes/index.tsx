@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Sparkles, Microscope, ShieldCheck, Layers, Beaker, FlaskConical, ChevronLeft, ChevronRight } from "lucide-react";
 import { productCategories } from "@/components/site/data";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import heroImg from "@/assessts/home-page.png";
+import heroImg from "@/assessts/hero.png";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -44,7 +44,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO — bright overlay, professional feel */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden">
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-fixed"
           style={{ backgroundImage: `url(${heroImg})` }}
@@ -71,10 +71,9 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 px-4 py-1.5 text-xs font-semibold tracking-[0.25em] uppercase text-white mb-7"
+             
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#C084E0]" />
-              Engineered since 2005 · UK · Pakistan · Nigeria
+              
             </motion.div>
 
             <motion.h1

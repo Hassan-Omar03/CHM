@@ -5,7 +5,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { productCategories } from "@/components/site/data";
 
-import heroImg from "@/assessts/products-page.png";
+import heroImg from "@/assessts/products.png";
 import gPlant from "@/assessts/g-plant.jpg";
 import gDrum from "@/assessts/g-drum.jpg";
 import gApp from "@/assessts/g-application.jpg";

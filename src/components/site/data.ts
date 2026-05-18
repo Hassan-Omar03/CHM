@@ -1,11 +1,11 @@
-import pAdhesive from "@/assessts/p-adhesive.jpg";
-import pAdmixture from "@/assessts/p-admixture.jpg";
-import pRepair from "@/assessts/p-repair.jpg";
-import pFlooring from "@/assessts/p-flooring.jpg";
-import pGrout from "@/assessts/p-grout.jpg";
-import pSealant from "@/assessts/p-sealant.jpg";
-import pCoating from "@/assessts/p-coating.jpg";
-import pWaterproof from "@/assessts/waterproof.jpeg";
+import pAdhesive from "@/assessts/Adhensive bonding.png";
+import pAdmixture from "@/assessts/Concrete mixture.png";
+import pRepair from "@/assessts/Concrete repair.png";
+import pFlooring from "@/assessts/Floring system.png";
+import pGrout from "@/assessts/Grout and anchor.png";
+import pSealant from "@/assessts/Joint Sealants.png";
+import pCoating from "@/assessts/Protective Coating & Sealers.png";
+import pWaterproof from "@/assessts/waterproofing.png";
 import pOthers from "@/assessts/p-others.jpg";
 
 export const productCategories = [
