@@ -11,7 +11,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative min-h-[50vh] lg:min-h-[60vh] flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-fixed"
         style={{ backgroundImage: `url(${image})` }}
@@ -25,8 +25,9 @@ export function PageHero({
           className="sr-only"
         />
       </div>
-      {/* Bright overlay — keeps photo visible but ensures text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70" />
+
+      {/* Subtle dark overlay for text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
 
       {/* Subtle purple geometric accent */}
       <div

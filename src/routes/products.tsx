@@ -6,12 +6,12 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { productCategories } from "@/components/site/data";
 
 import heroImg from "@/assessts/products.png";
-import gPlant from "@/assessts/g-plant.jpg";
-import gDrum from "@/assessts/g-drum.jpg";
-import gApp from "@/assessts/g-application.jpg";
+import gPlant from "@/assessts/g-plant.png";
+import gDrum from "@/assessts/g-drum.png";
+import gApp from "@/assessts/g-application.png";
 import gWaterproof from "@/assessts/waterproof.jpeg";
-import gCoating from "@/assessts/p-coating.jpg";
-import gFlooring from "@/assessts/p-flooring.jpg";
+import gCoating from "@/assessts/p-coating.png";
+import gFlooring from "@/assessts/p-floaring.png";
 
 const gallery = [
   { src: gDrum, alt: "Industrial chemical drum", span: "sm:row-span-2" },

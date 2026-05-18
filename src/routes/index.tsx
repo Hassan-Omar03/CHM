@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Sparkles, Microscope, ShieldCheck, Layers, Beaker, FlaskConical, ChevronLeft, ChevronRight } from "lucide-react";
 import { productCategories } from "@/components/site/data";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import heroImg from "@/assessts/hero.png";
+import heroImg from "@/assessts/hero2.png";
+import logo from "@/assessts/logo2.png";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -44,7 +45,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO — bright overlay, professional feel */}
-      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-fixed"
           style={{ backgroundImage: `url(${heroImg})` }}
@@ -58,12 +59,17 @@ export default function HomePage() {
             className="sr-only"
           />
         </div>
-        {/* Bright, airy overlay — not dark */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
+
+        {/* Subtle dark overlay for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
 
         {/* Subtle purple diagonal accent at bottom */}
         <div aria-hidden className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#5B0E6E] via-[#7B2C91] to-transparent" />
+
+        {/* Logo in top left corner */}
+        <div className="absolute top-8 left-4 md:top-18 md:left-16 z-20">
+          <img src={logo} alt="CHEMfix Logo" className="h-16 md:h-20 w-auto object-contain drop-shadow-lg" />
+        </div>
 
         <div className="relative container-px w-full pt-32 pb-20">
           <div className="max-w-5xl">
