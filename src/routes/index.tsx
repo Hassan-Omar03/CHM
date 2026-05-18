@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Sparkles, Microscope, ShieldCheck, Layers, Beaker, FlaskConical } from "lucide-react";
+import { ArrowRight, Sparkles, Microscope, ShieldCheck, Layers, Beaker, FlaskConical, ChevronLeft, ChevronRight } from "lucide-react";
 import { productCategories } from "@/components/site/data";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import heroImg from "@/assessts/home-page.png";
@@ -28,18 +28,36 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 export default function HomePage() {
+  // --- Carousel State for Product Range ---
+  const itemsPerPage = 3;
+  const totalPages = Math.max(1, Math.ceil((productCategories?.length || 0) / itemsPerPage));
+  const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    if (totalPages <= 1) return;
+    const timer = setInterval(() => {
+      setPage((prev) => (prev + 1) % totalPages);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [totalPages]);
+
   return (
     <>
       {/* HERO — bright overlay, professional feel */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Engineering and Construction"
-          aria-hidden
-          loading="eager"
-          fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover scale-105"
-        />
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-fixed"
+          style={{ backgroundImage: `url(${heroImg})` }}
+        >
+          <img
+            src={heroImg}
+            alt="Engineering and Construction"
+            aria-hidden
+            loading="eager"
+            fetchPriority="high"
+            className="sr-only"
+          />
+        </div>
         {/* Bright, airy overlay — not dark */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/10" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
@@ -103,10 +121,10 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-white/60"
+              className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-white/60"
           >
             <span>Scroll</span>
-            <div className="h-12 w-px bg-gradient-to-b from-white/60 to-transparent" />
+              <div className="h-12 w-px bg-gradient-to-b from-white/60 to-transparent" />
           </motion.div>
         </div>
       </section>
@@ -172,6 +190,8 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ scale: 1.03, rotateX: 3, rotateY: -3, y: -8 }}
+                style={{ perspective: 1000 }}
                 className="relative rounded-2xl bg-white border border-[#D9D9D9] p-8 hover:border-[#7B2C91]/40 transition group card-shadow hover:card-shadow-hover"
               >
                 {/* Purple top accent line */}
@@ -213,6 +233,7 @@ export default function HomePage() {
                   key={t}
                   initial={{ opacity: 0, scale: 0.96 }}
                   whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.04, y: -5 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   className="rounded-xl bg-[#F5F5F7] border border-[#D9D9D9] p-6 hover:border-[#7B2C91]/40 hover:bg-[#F0EBF4] transition card-shadow"
@@ -244,38 +265,76 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
-            {productCategories.map((p, i) => (
-              <motion.article
-                key={p.slug}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                className="group relative overflow-hidden rounded-2xl border border-[#D9D9D9] bg-white hover:border-[#7B2C91]/50 transition-all card-shadow hover:card-shadow-hover"
+          <div className="relative pt-4 pb-8 overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={page}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    loading={i < 3 ? "eager" : "lazy"}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#5B0E6E]/0 to-[#5B0E6E]/0 group-hover:from-[#5B0E6E]/15 group-hover:to-transparent transition-all duration-500" />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-semibold mb-3 text-[#2F2F33] group-hover:text-[#5B0E6E] transition">{p.title}</h3>
-                  <p className="text-sm text-[#6B6B72] leading-relaxed line-clamp-2 mb-5">{p.description}</p>
-                  <Link
-                    to="/products"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase text-[#7B2C91] hover:gap-2.5 transition-all"
+                {productCategories.slice(page * itemsPerPage, (page + 1) * itemsPerPage).map((p, i) => (
+                  <motion.article
+                    key={p.slug}
+                    whileHover={{ y: -10, scale: 1.02 }}
+                    className="group relative overflow-hidden rounded-2xl border border-[#D9D9D9] bg-white hover:border-[#7B2C91]/50 transition-all card-shadow hover:card-shadow-hover"
                   >
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        loading={i < 3 ? "eager" : "lazy"}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#5B0E6E]/0 to-[#5B0E6E]/0 group-hover:from-[#5B0E6E]/15 group-hover:to-transparent transition-all duration-500" />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-display text-xl font-semibold mb-3 text-[#2F2F33] group-hover:text-[#5B0E6E] transition">{p.title}</h3>
+                      <p className="text-sm text-[#6B6B72] leading-relaxed line-clamp-2 mb-5">{p.description}</p>
+                      <Link
+                        to="/products"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase text-[#7B2C91] hover:gap-2.5 transition-all"
+                      >
+                        Learn more <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    </div>
+                  </motion.article>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Carousel Controls & Progress */}
+            {totalPages > 1 && (
+              <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div className="w-full sm:max-w-md h-1.5 bg-[#D9D9D9] rounded-full overflow-hidden relative">
+                  <motion.div
+                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#5B0E6E] to-[#7B2C91]"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${((page + 1) / totalPages) * 100}%` }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  />
                 </div>
-              </motion.article>
-            ))}
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setPage(p => (p - 1 + totalPages) % totalPages)}
+                    className="p-3 rounded-full border border-[#D9D9D9] text-[#2F2F33] hover:border-[#7B2C91] hover:text-[#7B2C91] hover:bg-[#F0EBF4] transition"
+                    aria-label="Previous products"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => setPage(p => (p + 1) % totalPages)}
+                    className="p-3 rounded-full border border-[#D9D9D9] text-[#2F2F33] hover:border-[#7B2C91] hover:text-[#7B2C91] hover:bg-[#F0EBF4] transition"
+                    aria-label="Next products"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -285,8 +344,9 @@ export default function HomePage() {
         <div className="container-px">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#5B0E6E] to-[#7B2C91] p-8 sm:p-10 md:p-16 text-center">
             {/* Geometric shapes */}
-            <div aria-hidden className="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-white/5" />
-            <div aria-hidden className="absolute -bottom-12 -left-12 h-48 w-48 rounded-full bg-white/5" />
+            <motion.div aria-hidden animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
+            <motion.div aria-hidden animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute -bottom-12 -left-12 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
+            <div aria-hidden className="absolute -top-16 -right-16 h-64 w-64 rounded-full border border-white/10" />
             <div aria-hidden className="absolute top-0 left-0 right-0 h-px bg-white/20" />
 
             <div className="relative">

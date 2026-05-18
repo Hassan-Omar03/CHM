@@ -36,7 +36,7 @@ export function Navbar() {
         <div
           className={`mx-auto flex items-center justify-between rounded-2xl transition-all duration-500 ${
             scrolled
-              ? "bg-white/10 backdrop-blur-xl border border-white/20 px-4 md:px-6 py-2 sm:py-3 max-w-6xl shadow-[0_4px_24px_-8px_rgba(0,0,0,0.15)]"
+              ? "bg-white/90 backdrop-blur-xl border border-[#D9D9D9] px-4 md:px-6 py-2 sm:py-3 max-w-6xl shadow-[0_8px_30px_-4px_rgba(191,192,194,0.3)]"
               : "px-2 md:px-4 py-2 sm:py-3 max-w-7xl"
           }`}
         >
@@ -51,8 +51,12 @@ export function Navbar() {
                 <Link
                   key={l.to}
                   to={l.to}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                    active
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                    scrolled
+                      ? active
+                        ? "text-[#5B0E6E] bg-[#5B0E6E]/10"
+                        : "text-[#2F2F33] hover:text-[#5B0E6E] hover:bg-[#5B0E6E]/5"
+                      : active
                       ? "text-white bg-white/15"
                       : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
@@ -75,7 +79,9 @@ export function Navbar() {
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="lg:hidden rounded-lg p-2 hover:bg-white/10 text-white transition"
+            className={`lg:hidden rounded-lg p-2 transition ${
+              scrolled ? "text-[#2F2F33] hover:bg-[#D9D9D9]/50" : "text-white hover:bg-white/10"
+            }`}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -91,7 +97,9 @@ export function Navbar() {
             transition={{ duration: 0.25 }}
             className="lg:hidden container-px mt-2"
           >
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 flex flex-col gap-1">
+            <div className={`backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-1 ${
+              scrolled ? "bg-white/95 border border-[#D9D9D9] shadow-lg" : "bg-white/10 border border-white/20"
+            }`}>
               {links.map((l, i) => (
                 <motion.div
                   key={l.to}
@@ -101,7 +109,9 @@ export function Navbar() {
                 >
                   <Link
                     to={l.to}
-                    className="block rounded-lg px-4 py-3 text-sm font-medium text-white hover:bg-white/10 transition"
+                    className={`block rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
+                      scrolled ? "text-[#2F2F33] hover:text-[#5B0E6E] hover:bg-[#5B0E6E]/5" : "text-white hover:bg-white/10"
+                    }`}
                   >
                     {l.label}
                   </Link>

@@ -11,15 +11,20 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative min-h-[70vh] flex items-end overflow-hidden pt-32 pb-20">
-      <img
-        src={image}
-        alt=""
-        aria-hidden
-        loading="eager"
-        fetchPriority="high"
-        className="absolute inset-0 w-full h-full object-cover scale-105"
-      />
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <img
+          src={image}
+          alt=""
+          aria-hidden
+          loading="eager"
+          fetchPriority="high"
+          className="sr-only"
+        />
+      </div>
       {/* Bright overlay — keeps photo visible but ensures text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70" />
 
@@ -29,7 +34,7 @@ export function PageHero({
         className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#7B2C91]/70 to-transparent"
       />
 
-      <div className="relative container-px w-full">
+      <div className="relative container-px w-full pt-32 pb-20">
         <div className="max-w-4xl">
           {eyebrow && (
             <motion.div
