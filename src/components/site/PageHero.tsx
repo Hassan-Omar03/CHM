@@ -20,14 +20,13 @@ export function PageHero({
         fetchPriority="high"
         className="absolute inset-0 w-full h-full object-cover scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+      {/* Bright overlay — keeps photo visible but ensures text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70" />
+
+      {/* Subtle purple geometric accent */}
       <div
         aria-hidden
-        className="absolute -left-40 top-20 h-[480px] w-[480px] rounded-full bg-[var(--gradient-purple-soft)] opacity-40 blur-[120px] animate-glow-pulse"
-      />
-      <div
-        aria-hidden
-        className="absolute -right-32 bottom-0 h-[420px] w-[420px] rounded-full bg-[var(--gradient-purple-soft)] opacity-40 blur-[120px] animate-glow-pulse [animation-delay:-2s]"
+        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#7B2C91]/70 to-transparent"
       />
 
       <div className="relative container-px w-full">
@@ -37,9 +36,9 @@ export function PageHero({
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-semibold tracking-[0.25em] uppercase text-primary-glow mb-6"
+              className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 px-4 py-1.5 text-xs font-semibold tracking-[0.25em] uppercase text-white mb-6"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-primary-glow purple-glow" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#7B2C91]" />
               {eyebrow}
             </motion.div>
           )}
@@ -47,7 +46,7 @@ export function PageHero({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display text-5xl md:text-7xl font-bold leading-[1.05] text-gradient"
+            className="font-display text-5xl md:text-7xl font-bold leading-[1.05] text-white drop-shadow-lg"
           >
             {title}
           </motion.h1>
@@ -56,7 +55,7 @@ export function PageHero({
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-5 sm:mt-6 max-w-2xl text-lg text-foreground/90 leading-relaxed"
+              className="mt-5 sm:mt-6 max-w-2xl text-lg text-white/85 leading-relaxed"
             >
               {subtitle}
             </motion.p>

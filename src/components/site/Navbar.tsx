@@ -36,7 +36,7 @@ export function Navbar() {
         <div
           className={`mx-auto flex items-center justify-between rounded-2xl transition-all duration-500 ${
             scrolled
-              ? "glass-strong px-4 md:px-6 py-2 sm:py-3 max-w-6xl"
+              ? "bg-white/10 backdrop-blur-xl border border-white/20 px-4 md:px-6 py-2 sm:py-3 max-w-6xl shadow-[0_4px_24px_-8px_rgba(0,0,0,0.15)]"
               : "px-2 md:px-4 py-2 sm:py-3 max-w-7xl"
           }`}
         >
@@ -51,17 +51,13 @@ export function Navbar() {
                 <Link
                   key={l.to}
                   to={l.to}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors ${
-                    active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    active
+                      ? "text-white bg-white/15"
+                      : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {l.label}
-                  {active && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute inset-x-3 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-primary-glow to-transparent"
-                    />
-                  )}
                 </Link>
               );
             })}
@@ -70,7 +66,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link
               to="/contact"
-              className="relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-primary-glow px-5 py-2.5 text-sm font-semibold text-white purple-glow hover:purple-glow-strong transition-all hover:scale-[1.03]"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#5B0E6E] to-[#7B2C91] px-5 py-2.5 text-sm font-semibold text-white purple-glow hover:purple-glow-strong transition-all hover:scale-[1.03]"
             >
               Get a Quote
             </Link>
@@ -79,7 +75,7 @@ export function Navbar() {
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="lg:hidden rounded-lg p-2 hover:bg-white/5 transition"
+            className="lg:hidden rounded-lg p-2 hover:bg-white/10 text-white transition"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -95,7 +91,7 @@ export function Navbar() {
             transition={{ duration: 0.25 }}
             className="lg:hidden container-px mt-2"
           >
-            <div className="glass-strong rounded-2xl p-4 flex flex-col gap-1">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 flex flex-col gap-1">
               {links.map((l, i) => (
                 <motion.div
                   key={l.to}
@@ -105,7 +101,7 @@ export function Navbar() {
                 >
                   <Link
                     to={l.to}
-                    className="block rounded-lg px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary-glow transition"
+                    className="block rounded-lg px-4 py-3 text-sm font-medium text-white hover:bg-white/10 transition"
                   >
                     {l.label}
                   </Link>
@@ -113,7 +109,7 @@ export function Navbar() {
               ))}
               <Link
                 to="/contact"
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-primary-glow px-5 py-3 text-sm font-semibold text-white purple-glow"
+                className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#5B0E6E] to-[#7B2C91] px-5 py-3 text-sm font-semibold text-white purple-glow"
               >
                 Get a Quote
               </Link>

@@ -18,9 +18,9 @@ export function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className={`inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] uppercase text-primary-glow mb-4 ${align === "center" ? "justify-center" : ""}`}
+          className={`inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] uppercase text-[#7B2C91] mb-4 ${align === "center" ? "justify-center" : ""}`}
         >
-          <span className="h-px w-8 bg-primary-glow/60" />
+          <span className="h-px w-8 bg-[#7B2C91]/50" />
           {eyebrow}
         </motion.div>
       )}
@@ -39,7 +39,7 @@ export function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-4 md:mt-5 text-base md:text-lg text-muted-foreground leading-relaxed"
+          className="mt-4 md:mt-5 text-base md:text-lg text-[#6B6B72] leading-relaxed"
         >
           {description}
         </motion.p>
