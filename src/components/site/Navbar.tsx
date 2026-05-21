@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "@/assessts/logo2.png";
 
 const links = [
-  { to: "/", label: "Home" },
+  { to: "/", label: "Products" },
   { to: "/about", label: "About" },
-  { to: "/products", label: "Products" },
   { to: "/services", label: "Services" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -26,41 +26,51 @@ export function Navbar() {
   useEffect(() => { setOpen(false); }, [location.pathname]);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-2" : "py-4"
-      }`}
-    >
+   // Outer header wrapper — add pb so bottom overflow is visible
+<header
+  className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+    scrolled ? "py-2 pb-4" : "py-4"
+  }`}
+>
       <div className="container-px">
-        <div
-          className={`mx-auto flex items-center justify-between rounded-2xl transition-all duration-500 ${
-            scrolled
-              ? "bg-white/90 backdrop-blur-xl border border-[#D9D9D9] px-4 md:px-6 py-2 sm:py-3 max-w-6xl shadow-[0_8px_30px_-4px_rgba(191,192,194,0.3)]"
-              : "px-2 md:px-4 py-2 sm:py-3 max-w-7xl"
-          }`}
-        >
-          <nav className="hidden lg:flex items-center gap-1">
-            {links.map((l) => {
-              const active = location.pathname === l.to;
-              return (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                    scrolled
-                      ? active
-                        ? "text-[#5B0E6E] bg-[#5B0E6E]/10"
-                        : "text-[#2F2F33] hover:text-[#5B0E6E] hover:bg-[#5B0E6E]/5"
-                      : active
-                      ? "text-white bg-white/15"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
-                  }`}
-                >
-                  {l.label}
-                </Link>
-              );
-            })}
-          </nav>
+    <div
+  className={`mx-auto flex items-center justify-between rounded-2xl transition-all duration-500 ${
+    scrolled
+      ? "bg-white/90 backdrop-blur-xl border border-[#D9D9D9] px-4 md:px-6 py-2 max-w-6xl shadow-[0_8px_30px_-4px_rgba(191,192,194,0.3)]"
+      : "px-2 md:px-4 py-2 max-w-7xl"
+  }`}
+>
+  <div className="flex items-center gap-4 lg:gap-8 flex-1">
+    <Link to="/" className="flex shrink-0 items-center">
+     <img
+  src={logo}
+  alt="CHEMfix Logo"
+  className="h-16 sm:h-20 w-auto object-contain"
+/>
+    </Link>
+            <nav className="hidden lg:flex items-center gap-1">
+              {links.map((l) => {
+                const active = location.pathname === l.to;
+                return (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                      scrolled
+                        ? active
+                          ? "text-[#5B0E6E] bg-[#5B0E6E]/10"
+                          : "text-[#2F2F33] hover:text-[#5B0E6E] hover:bg-[#5B0E6E]/5"
+                        : active
+                        ? "text-white bg-white/15"
+                        : "text-white/80 hover:text-white hover:bg-white/10"
+                    }`}
+                  >
+                    {l.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
 
           <div className="hidden lg:block">
             <Link

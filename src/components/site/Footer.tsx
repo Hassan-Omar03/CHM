@@ -41,7 +41,7 @@ export function Footer() {
               <h4 className="text-sm font-semibold mb-5 tracking-wide uppercase text-[#2F2F33]">Navigate</h4>
               <ul className="space-y-3 text-sm text-[#6B6B72]">
                 {[
-                  ["Home", "/"], ["About", "/about"], ["Products", "/products"],
+                  ["Products", "/"], ["About", "/about"],
                   ["Services", "/services"], ["Contact", "/contact"],
                 ].map(([label, to]) => (
                   <li key={to}>
