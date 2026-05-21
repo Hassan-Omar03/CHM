@@ -9,7 +9,7 @@ import heroImg from "@/assessts/products.png";
 import gPlant from "@/assessts/g-plant.png";
 import gDrum from "@/assessts/g-drum.png";
 import gApp from "@/assessts/g-application.png";
-import gWaterproof from "@/assessts/waterproof.jpeg";
+import gWaterproof from "@/assessts/waterproofing.png";
 import gCoating from "@/assessts/p-coating.png";
 import gFlooring from "@/assessts/p-floaring.png";
 

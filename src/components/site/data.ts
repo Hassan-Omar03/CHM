@@ -1,10 +1,10 @@
-import pAdhesive from "@/assessts/Adhensive bonding.png";
+import pAdhesive from "@/assessts/Adhensive bonding.jpeg";
 import pAdmixture from "@/assessts/Concrete mixture.png";
 import pRepair from "@/assessts/Concrete repair.png";
 import pFlooring from "@/assessts/Floring system.png";
 import pGrout from "@/assessts/Grout and anchor.png";
 import pSealant from "@/assessts/Joint Sealants.png";
-import pCoating from "@/assessts/Protective Coating & Sealers.png";
+import pCoating from "@/assessts/Protective Coating & Sealers.jpeg";
 import pWaterproof from "@/assessts/waterproofing.png";
 import pOthers from "@/assessts/p-others.jpg";
 
