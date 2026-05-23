@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -13,6 +14,17 @@ import gWaterproof from "@/assessts/waterproofing.png";
 import gCoating from "@/assessts/p-coating.png";
 import gFlooring from "@/assessts/p-floaring.png";
 
+type ProductCardData = {
+  id?: string;
+  slug?: string;
+  title: string;
+  description: string;
+  image?: string;
+  imageUrl?: string;
+};
+
+const API_URL = import.meta.env.VITE_API_URL || "https://chemfix-backend.vercel.app";
+
 const gallery = [
   { src: gDrum, alt: "Industrial chemical drum", span: "sm:row-span-2" },
   { src: gPlant, alt: "Manufacturing plant", span: "" },
@@ -23,6 +35,32 @@ const gallery = [
 ];
 
 export default function HomePage() {
+  const [uploadedProducts, setUploadedProducts] = useState<ProductCardData[]>([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(`${API_URL}/api/products`, { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : []))
+      .then((products) => {
+        if (Array.isArray(products)) {
+          setUploadedProducts(products);
+        }
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          setUploadedProducts([]);
+        }
+      });
+
+    return () => controller.abort();
+  }, []);
+
+  const products = useMemo<ProductCardData[]>(
+    () => [...uploadedProducts, ...productCategories],
+    [uploadedProducts],
+  );
+
   return (
     <>
       <PageHero
@@ -42,9 +80,9 @@ export default function HomePage() {
           />
 
           <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
-            {productCategories.map((p, i) => (
+            {products.map((p, i) => (
               <motion.article
-                key={p.slug}
+                key={p.id || p.slug || p.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -53,7 +91,7 @@ export default function HomePage() {
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
-                    src={p.image}
+                    src={p.imageUrl || p.image}
                     alt={p.title}
                     loading={i < 4 ? "eager" : "lazy"}
                     className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110"
