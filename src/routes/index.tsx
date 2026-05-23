@@ -23,7 +23,7 @@ type ProductCardData = {
   imageUrl?: string;
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "https://chemfix-backend.vercel.app";
+const API_URL = (import.meta.env.VITE_API_URL || "https://chemfix-backend.vercel.app/api").replace(/\/$/, "");
 
 const gallery = [
   { src: gDrum, alt: "Industrial chemical drum", span: "sm:row-span-2" },
@@ -40,7 +40,7 @@ export default function HomePage() {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch(`${API_URL}/api/products`, { signal: controller.signal })
+    fetch(`${API_URL}/products`, { signal: controller.signal })
       .then((response) => (response.ok ? response.json() : []))
       .then((products) => {
         if (Array.isArray(products)) {
